@@ -1,4 +1,4 @@
-function MaskedImg = segment(str)
+function MaskedImg = segment(str,im)
     imset = imageSet(str);
     seg_d = zeros(124,124,imset.Count);
     seg_e = zeros(124,124,imset.Count);
@@ -80,7 +80,17 @@ function MaskedImg = segment(str)
     [val_maxd idx_maxd] = max(area_d);
     final_d = seg_d(:,:,idx_maxd);
     B_d = bwboundaries(final_d);
-    imshow(final_d);
+    imshow(im);
+    sz = size(im);
+    for k = 1:sz(1)
+        for l=1:sz(2)
+            if  final_d == 1;
+                MaskedImg(k,l) = im(k,l);
+            end
+            else
+                MaskedImg(k,l) = 0
+        end
+    end
     hold on
     for k = 1:length(B_d)
        boundary = B_d{k};

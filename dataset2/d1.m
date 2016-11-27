@@ -1,6 +1,6 @@
 clc;
 clear all;
-imset = imageSet('./e1');
+imset = imageSet('../dataset2/e1');
 seg_d = zeros(124,124,imset.Count);
 seg_e = zeros(124,124,imset.Count);
 area_e = zeros(1,imset.Count);

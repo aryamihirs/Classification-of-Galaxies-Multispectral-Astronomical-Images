@@ -7,7 +7,7 @@ function MaskedImg = segment(str,im)
     gravity_c = [[62 63] [62 65] [66 62] [63 63]];
     for i=1:imset.Count
         x = read(imset,i);
-    %     x = imread('./s1/s1_1.jpg');
+%         x = imread('./s1/s1_1.jpg');
         x = imresize(x,[124 124]);   
         x = rgb2gray(x);
         se = strel('disk',5);
@@ -80,8 +80,19 @@ function MaskedImg = segment(str,im)
     [val_maxd idx_maxd] = max(area_d);
     final_d = seg_d(:,:,idx_maxd);
     B_d = bwboundaries(final_d);
+%     temp = imread('../dataset2/s1/s1_1.jpg');
+    im = imresize(im,[124 124])
+    sz = size(im);
+    for k = 1:sz(1)
+        for l=1:sz(2)
+            if  final_d(k,l) == 1;
+                MaskedImg(k,l) = im(k,l);
+            else
+                MaskedImg(k,l) = 0;
+            end
+        end
+    end
     imshow(im);
-    MaskedImg = final_d .* im;
     hold on
     for k = 1:length(B_d)
        boundary = B_d{k};
