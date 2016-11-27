@@ -81,7 +81,17 @@ function MaskedImg = segment(str,im)
     final_d = seg_d(:,:,idx_maxd);
     B_d = bwboundaries(final_d);
     imshow(im);
-    MaskedImg = final_d .* im;
+    sz = size(im);
+    for k = 1:sz(1)
+        for l=1:sz(2)
+            if  final_d(k,l) == 1;
+                MaskedImg(k,l) = im(k,l);
+            else
+                MaskedImg(k,l) = 0;
+            end
+        end
+    end
+    
     hold on
     for k = 1:length(B_d)
        boundary = B_d{k};
