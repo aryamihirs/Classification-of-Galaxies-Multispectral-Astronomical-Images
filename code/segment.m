@@ -83,33 +83,21 @@ function MaskedImg = segment(str,im)
 %     temp = imread('../dataset2/s1/s1_1.jpg');
     im = imresize(im,[124 124])
     sz = size(im);
+    MaskedImg = zeros(sz);
     for k = 1:sz(1)
         for l=1:sz(2)
-            if  final_d(k,l) == 1;
+            if final_d(k,l) == 1
                 MaskedImg(k,l) = im(k,l);
-            else
-                MaskedImg(k,l) = 0;
+%             else
+%                 MaskedImg(k,l) = 0;
             end
         end
     end
-    imshow(im);
-<<<<<<< HEAD
-=======
-    sz = size(im);
-    for k = 1:sz(1)
-        for l=1:sz(2)
-            if  final_d(k,l) == 1;
-                MaskedImg(k,l) = im(k,l);
-            else
-                MaskedImg(k,l) = 0;
-            end
-        end
-    end
-    
->>>>>>> 875af83e2da9de5d0a5a8b53b845b8e0b06d6739
-    hold on
-    for k = 1:length(B_d)
-       boundary = B_d{k};
-       plot(boundary(:,2), boundary(:,1), 'b', 'LineWidth', 1)
-    end
+%     figure;
+%     imshow(im);
+%     hold on
+%     for k = 1:length(B_d)
+%        boundary = B_d{k};
+%        plot(boundary(:,2), boundary(:,1), 'b', 'LineWidth', 1)
+%     end
 end
