@@ -1,5 +1,5 @@
-% function [MaskedImg,ecc] = segment(str,im)
-    imset = imageSet('../dataset2/s1');
+function MaskedImg = segment(str,im)
+    imset = imageSet(str);
     seg_d = zeros(124,124,imset.Count);
     seg_e = zeros(124,124,imset.Count);
     area_e = zeros(1,imset.Count);
@@ -111,11 +111,11 @@
     im = uint8(im);
     MaskedImg = mask .* im;
     MaskedImg = MaskedImg + 255*(1 - mask);
-%     figure;
-%     imshow(final_d);
+    figure;
+    imshow(final_d);
 %     hold on;
 %      for k = 1:length(B_d)
 %         boundary = B_d{k};
 %         plot(boundary(:,2), boundary(:,1), 'b', 'LineWidth', 1)
 %      end
-% end
+end

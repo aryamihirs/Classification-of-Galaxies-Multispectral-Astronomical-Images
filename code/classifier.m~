@@ -6,11 +6,10 @@ function op = classifier(maskedImage,ecc)
 %     BW2 = bwareaopen(I1,5);
     if ecc > 0.9
         figure;
-        imshow(maskedImage);title('Spiral Segmented')
+        title('Spiral Segmented');imshow(maskedImage);
     else
         figure;
-        imshow(maskedImage);title('Elliptical Segmented')
-    end
+        
 end
 
 
